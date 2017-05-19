@@ -75,9 +75,6 @@ class PyFu():
 	
 	def io_in(self):
 		x = input('in?')
-		if len(x) == 0:
-			self.mem[self.dp] = 0
-		else:
-			self.mem[self.dp] = ord(x[0])
+		self.mem[self.dp] = 0 if len(x) == 0 else ord(x[0])
 		self.ip_incr()
 
