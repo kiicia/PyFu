@@ -1,4 +1,5 @@
 class PyFu():
+	'''Brainfuck interpreter'''
 
 	ops = '><+-[].,'
 	
@@ -14,21 +15,26 @@ class PyFu():
 	}
 	
 	def __init__(self,n):
+		'''Set memory size'''
 		self.reset(n)
 	
 	def __str__(self):
+		'''Internal state can be printed out'''
 		return 'PyFu mem: {} dp: {} ip: {} code: \'{}\''.format(self.mem, self.dp, self.ip, ''.join(self.code))
 	
 	def reset(self,n):
+		'''Reset internal state, set memory size'''
 		self.mem = [0]*n
 		self.code = []
 		self.dp = 0
 		self.ip = 0
 	
 	def filter(code):
+		'''General use Brainfuck code filter, only valid code remains'''
 		return [c for c in code if PyFu.ops.find(c) > -1]
 	
 	def run(self,code):
+		'''Run code, code will be filtered and only valid opcodes will be used'''
 		self.code = PyFu.filter(code)
 		while self.ip < len(self.code):
 			PyFu.switch[self.code[self.ip]](self)
