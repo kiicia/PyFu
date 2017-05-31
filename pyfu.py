@@ -140,7 +140,7 @@ class PyFu():
 		self.ip_incr()
 
 	def l_bgn(self):
-		''' Continues to next opcode or skips to loop end if current memory value is 0
+		''' [ Continues to next opcode or skips to loop end if current memory value is 0
 		>>> p = PyFu(2)
 		>>> p.mem[0] = 1
 		>>> p.code = ['[','-',']']
@@ -160,7 +160,7 @@ class PyFu():
 			self.ip_incr()
 	
 	def l_end(self):
-		''' Continues to next opcode or backtracks to loop beginning if current memory value is not 0
+		''' ] Continues to next opcode or backtracks to loop beginning if current memory value is not 0
 		>>> p = PyFu(2)
 		>>> p.mem[0] = 1
 		>>> p.ip = 2
